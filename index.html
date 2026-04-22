@@ -36,10 +36,11 @@
         .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; opacity: 0.7; transition: 0.3s; cursor: pointer; }
         .nav-links a:hover, .nav-links a.active-link { opacity: 1; color: #007bff; }
 
-        /* --- DASHBOARD GRID --- */
+        /* --- DASHBOARD GRID (SEMANAS) --- */
         .weeks-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
-            padding: 0 10% 40px 10%; max-width: 1400px; margin: 40px auto 0 auto;
+            padding: 0 10% 40px 10%; max-width: 1400px; 
+            margin: 110px auto 0 auto; /* Aumentado para que no se monte con el nav */
             position: relative; z-index: 10;
         }
         .week-card {
@@ -52,7 +53,8 @@
         .week-card.active h3, .week-card.active h4 { color: #000; opacity: 1; }
 
         /* --- CONTENIDO DINÁMICO --- */
-        .dynamic-content { display: none; padding: 60px 10%; max-width: 1200px; margin: 0 auto; animation: fadeInUp 0.6s ease forwards; }
+        /* Aumentamos el padding-top a 120px para que respire y no tape el contenido con el menú fijo */
+        .dynamic-content { display: none; padding: 120px 10% 60px 10%; max-width: 1200px; margin: 0 auto; animation: fadeInUp 0.6s ease forwards; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .plan-header { margin-bottom: 60px; border-left: 3px solid #fff; padding-left: 20px; }
@@ -105,7 +107,7 @@
         .resumen-item h4 { margin: 0 0 10px 0; font-size: 0.85rem; text-transform: uppercase; color: #007bff; }
         .resumen-item p { margin: 0; font-size: 0.8rem; line-height: 1.6; color: #ccc; }
 
-        /* --- PANEL PRODUCCIÓN --- */
+        /* --- PANEL PRODUCCIÓN (COMMAND CENTER AVANZADO) --- */
         .prod-selector { display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 1px solid #1a1a1a; padding-bottom: 20px; overflow-x: auto; }
         .btn-week-sel { background: transparent; border: 1px solid #333; color: #555; padding: 10px 20px; font-size: 0.6rem; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; white-space: nowrap; }
         .btn-week-sel.active { border-color: #fff; color: #fff; background: rgba(255,255,255,0.05); }
@@ -118,7 +120,7 @@
 
         footer { padding: 80px 20px; text-align: center; opacity: 0.2; font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
 
-        @media (max-width: 768px) { #cart-panel { width: 100%; } .weeks-grid { grid-template-columns: repeat(2, 1fr); } .prod-container { grid-template-columns: 1fr; } .prod-sidebar { border-right: none; border-bottom: 1px solid #1a1a1a; padding-bottom: 20px; margin-bottom: 30px; } }
+        @media (max-width: 768px) { #cart-panel { width: 100%; } .weeks-grid { grid-template-columns: repeat(2, 1fr); margin-top: 80px; } .prod-container { grid-template-columns: 1fr; } .prod-sidebar { border-right: none; border-bottom: 1px solid #1a1a1a; padding-bottom: 20px; margin-bottom: 30px; } }
     </style>
 </head>
 <body>
@@ -168,12 +170,14 @@
 
         <div id="production-tab" class="dynamic-content">
             <div class="plan-header"><p>Realizador Master</p><h2>Command Center</h2></div>
+            
             <div class="prod-selector">
                 <button class="btn-week-sel active" onclick="loadProdWeek(1, this)">Semana 1</button>
                 <button class="btn-week-sel" onclick="loadProdWeek(2, this)">Semana 2</button>
                 <button class="btn-week-sel" onclick="loadProdWeek(3, this)">Semana 3</button>
                 <button class="btn-week-sel" onclick="loadProdWeek(4, this)">Semana 4</button>
             </div>
+
             <div class="prod-container">
                 <div class="prod-sidebar">
                     <div class="status-badge" id="prod-status-tag">Semana 1 en Carga</div>
@@ -260,6 +264,7 @@
                     Mientras el mercado global se domina con volumen, Venezuela está apostando por variedades que compiten en el mercado de cafés de especialidad, donde una sola libra puede costar diez veces más que el café común en la Bolsa de Nueva York.<br><br>
                     10 tazas de café común o un solo tesoro de café geisha, porque el buen café no se hace, se cultiva. Y es nuestro, es venezolano."
                 </div>
+                <div class="video-container-vimeo"><iframe src="https://player.vimeo.com/video/1185370099" frameborder="0"></iframe></div>
                 <div class="product-feedback"><label>Sugerencias:</label><textarea id="f22" placeholder="Tu feedback..."></textarea><button class="btn-action" onclick="addToCart('S2: Datos Café Geisha', 'f22')">Añadir a Revisión</button></div>
             </div>
 
