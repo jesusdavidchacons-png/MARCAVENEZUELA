@@ -36,11 +36,11 @@
         .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; opacity: 0.7; transition: 0.3s; cursor: pointer; }
         .nav-links a:hover, .nav-links a.active-link { opacity: 1; color: #007bff; }
 
-        /* --- DASHBOARD GRID (SEMANAS) --- */
+        /* --- DASHBOARD GRID --- */
         .weeks-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
             padding: 0 10% 40px 10%; max-width: 1400px; 
-            margin: 110px auto 0 auto; /* Aumentado para que no se monte con el nav */
+            margin: 110px auto 0 auto; 
             position: relative; z-index: 10;
         }
         .week-card {
@@ -53,13 +53,37 @@
         .week-card.active h3, .week-card.active h4 { color: #000; opacity: 1; }
 
         /* --- CONTENIDO DINÁMICO --- */
-        /* Aumentamos el padding-top a 120px para que respire y no tape el contenido con el menú fijo */
         .dynamic-content { display: none; padding: 120px 10% 60px 10%; max-width: 1200px; margin: 0 auto; animation: fadeInUp 0.6s ease forwards; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         .plan-header { margin-bottom: 60px; border-left: 3px solid #fff; padding-left: 20px; }
         .plan-header h2 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 800; text-transform: uppercase; line-height: 1.1; margin: 0; }
         .plan-header p { opacity: 0.5; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 5px; }
+
+        /* --- BOTÓN NOTIFICACIÓN --- */
+        .btn-share-update {
+            display: inline-flex;
+            align-items: center;
+            background: #25D366;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 25px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        }
+        .btn-share-update:hover { 
+            background: #1ebe57; 
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+        }
 
         /* --- ITEMS Y TÍTULOS --- */
         .item-block { margin-bottom: 80px; padding-bottom: 40px; border-bottom: 1px solid #1a1a1a; }
@@ -107,7 +131,7 @@
         .resumen-item h4 { margin: 0 0 10px 0; font-size: 0.85rem; text-transform: uppercase; color: #007bff; }
         .resumen-item p { margin: 0; font-size: 0.8rem; line-height: 1.6; color: #ccc; }
 
-        /* --- PANEL PRODUCCIÓN (COMMAND CENTER AVANZADO) --- */
+        /* --- PANEL PRODUCCIÓN --- */
         .prod-selector { display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 1px solid #1a1a1a; padding-bottom: 20px; overflow-x: auto; }
         .btn-week-sel { background: transparent; border: 1px solid #333; color: #555; padding: 10px 20px; font-size: 0.6rem; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; white-space: nowrap; }
         .btn-week-sel.active { border-color: #fff; color: #fff; background: rgba(255,255,255,0.05); }
@@ -170,14 +194,12 @@
 
         <div id="production-tab" class="dynamic-content">
             <div class="plan-header"><p>Realizador Master</p><h2>Command Center</h2></div>
-            
             <div class="prod-selector">
                 <button class="btn-week-sel active" onclick="loadProdWeek(1, this)">Semana 1</button>
                 <button class="btn-week-sel" onclick="loadProdWeek(2, this)">Semana 2</button>
                 <button class="btn-week-sel" onclick="loadProdWeek(3, this)">Semana 3</button>
                 <button class="btn-week-sel" onclick="loadProdWeek(4, this)">Semana 4</button>
             </div>
-
             <div class="prod-container">
                 <div class="prod-sidebar">
                     <div class="status-badge" id="prod-status-tag">Semana 1 en Carga</div>
@@ -217,7 +239,11 @@
         </div>
 
         <div id="week-1" class="dynamic-content" style="display: block;">
-            <div class="plan-header"><p>Semana 1: Industria de hierro y Acero (Lo que nos sostiene)</p><h2>Objetivo: Demostrar que el acero venezolano es la fuerza real que levanta las obras más grandes del país.</h2></div>
+            <div class="plan-header">
+                <p>Semana 1: Industria de hierro y Acero (Lo que nos sostiene)</p>
+                <h2>Objetivo: Demostrar que el acero venezolano es la fuerza real que levanta las obras más grandes del país.</h2>
+                <button class="btn-share-update" onclick="shareUpdate(1)">🚀 Notificar Novedades (WhatsApp)</button>
+            </div>
             
             <div class="item-block">
                 <h3 class="item-title">VIDEO INTEGRACIONAL: Somos más que una postal (Guayana)</h3>
@@ -248,7 +274,11 @@
         </div>
 
         <div id="week-2" class="dynamic-content">
-            <div class="plan-header"><p>Semana 2: Oro Fértil (El alma en cada grano)</p><h2>Objetivo: Resaltar la excelencia agrícola y la tecnología con propósito.</h2></div>
+            <div class="plan-header">
+                <p>Semana 2: Oro Fértil (El alma en cada grano)</p>
+                <h2>Objetivo: Resaltar la excelencia agrícola y la tecnología con propósito.</h2>
+                <button class="btn-share-update" onclick="shareUpdate(2)">🚀 Notificar Novedades (WhatsApp)</button>
+            </div>
             
             <div class="item-block">
                 <h3 class="item-title">VIDEO INTEGRACIONAL: LA RUTA DEL SABOR</h3>
@@ -286,7 +316,11 @@
         </div>
 
         <div id="week-3" class="dynamic-content">
-            <div class="plan-header"><p>Semana 3 | El Gigante Silencioso de Venezuela</p><h2>Vzla en Datos: Venezuela exporta algas marinas deshidratadas</h2></div>
+            <div class="plan-header">
+                <p>Semana 3 | El Gigante Silencioso de Venezuela</p>
+                <h2>Vzla en Datos: Venezuela exporta algas marinas deshidratadas</h2>
+                <button class="btn-share-update" onclick="shareUpdate(3)">🚀 Notificar Novedades (WhatsApp)</button>
+            </div>
             
             <div class="item-block">
                 <h3 class="item-title">Guion: Economía Azul</h3>
@@ -312,7 +346,11 @@
         </div>
 
         <div id="week-4" class="dynamic-content">
-            <div class="plan-header"><p>Semana 4: Deporte Nacional — "Glorias Deportivas"</p><h2>Objetivo: Resaltar el talento de exportación y la resiliencia de nuestra gente.</h2></div>
+            <div class="plan-header">
+                <p>Semana 4: Deporte Nacional — "Glorias Deportivas"</p>
+                <h2>Objetivo: Resaltar el talento de exportación y la resiliencia de nuestra gente.</h2>
+                <button class="btn-share-update" onclick="shareUpdate(4)">🚀 Notificar Novedades (WhatsApp)</button>
+            </div>
             
             <div class="item-block">
                 <h3 class="item-title">Venezuela en Datos: La medida de nuestra grandeza</h3>
@@ -374,7 +412,6 @@
             playSound();
             document.querySelectorAll('.btn-week-sel').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            
             const titles = ["INDUSTRIA Y ACERO", "ORO FÉRTIL", "ECONOMÍA AZUL", "GLORIAS DEPORTIVAS"];
             document.getElementById('prod-title-tag').innerText = titles[num-1];
             document.getElementById('prod-status-tag').innerText = `Semana ${num} en Carga`;
@@ -386,12 +423,22 @@
             document.querySelectorAll('.week-card').forEach(c => c.classList.remove('active'));
             document.getElementById('week-' + num).style.display = 'block';
             if(el) el.classList.add('active');
+            
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?week=' + num;
+            window.history.pushState({path:newUrl}, '', newUrl);
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function shareUpdate(num) {
+            const baseUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            const weekUrl = baseUrl + '?week=' + num;
+            const message = `🚀 *¡Novedades en Marca País Media!* 🚀\n\nLos contenidos de la *Semana ${num}* ya están listos para tu revisión.\n\nHemos aplicado nuevos cambios y nos encantaría conocer tu opinión para seguir puliendo cada detalle. ✨\n\nEntra directamente aquí:\n${weekUrl}`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`, '_blank');
         }
 
         function addToCart(item, id) {
             const val = document.getElementById(id).value;
-            if(!val.trim()) return alert("Por favor escribe tu sugerencia.");
+            if(!val.trim()) return alert("Escribe tu sugerencia.");
             suggestions.push({ item, text: val });
             document.getElementById(id).value = "";
             updateCart();
@@ -399,8 +446,7 @@
         }
 
         function updateCart() {
-            const floater = document.getElementById('cart-floater');
-            floater.style.display = suggestions.length > 0 ? 'flex' : 'none';
+            document.getElementById('cart-floater').style.display = suggestions.length > 0 ? 'flex' : 'none';
             document.getElementById('cart-count').innerText = suggestions.length;
             document.getElementById('cart-items-list').innerHTML = suggestions.map(s => `<div class="cart-item"><strong>${s.item}</strong>${s.text}</div>`).join("");
         }
@@ -416,8 +462,22 @@
 
         function sendProductionEmail() {
             const url = document.getElementById('final-url').value;
-            window.location.href = `mailto:admin@tuweb.com?subject=UPDATE MARCA PAÍS&body=URL de Entrega: ${url}`;
+            window.location.href = `mailto:admin@tuweb.com?subject=UPDATE&body=${url}`;
         }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const weekParam = urlParams.get('week');
+            if (weekParam) {
+                document.getElementById('splash-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.getElementById('main-content').style.opacity = '1';
+                document.getElementById('nav-dash').classList.add('active-link');
+                document.getElementById('weeks-selector').style.display = 'grid';
+                const weekCards = document.querySelectorAll('.week-card');
+                if(weekCards[weekParam-1]) showWeek(weekParam, weekCards[weekParam-1]);
+            }
+        });
     </script>
 </body>
 </html>
